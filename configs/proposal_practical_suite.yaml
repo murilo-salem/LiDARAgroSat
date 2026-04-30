@@ -1,0 +1,25 @@
+data:
+  split_mode: basic
+  adaptive_target_sigma: true
+  adaptive_sigma_a: 0.25
+  adaptive_sigma_b: 0.03
+  adaptive_sigma_min_m: 0.45
+  adaptive_sigma_max_m: 1.20
+
+training:
+  epochs: 40
+  validation_interval_epochs: 1
+  min_epochs_before_stop: 15
+  accumulation_steps: 4
+  batch_size: 2
+  patience: 10
+  num_workers: 4
+
+evaluation:
+  tune_postprocess: true
+  use_tta: true
+  confidence_threshold_grid: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40]
+  nms_radius_grid_m: [0.8, 1.0, 1.2, 1.5]
+  min_pred_height_grid_m: [null, 1.5, 2.0]
+  min_chm_at_center_grid_m: [null, 2.0, 2.5]
+  border_margin_grid_px: [0, 8, 16]

@@ -1,0 +1,33 @@
+paths:
+  output_dir: outputs_baseline_stage_basic
+
+data:
+  split_mode: basic
+  species_label_mode: coarse
+  peakness_window_sizes_m: [0.8, 1.2, 1.6]
+
+hybrid:
+  proposal_source_mode: chm
+  proposal_window_sizes_m: [0.8, 1.0, 1.2, 1.5, 1.8, 2.0]
+  proposal_gaussian_sigmas: [0.7, 1.0, 1.5]
+  proposal_min_height_m: 2.0
+  proposal_dedup_radius_m: 0.8
+  candidate_max_per_plot: 1536
+  batch_size: 64
+  epochs: 10
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  patience: 4
+  positive_match_radius_m: 1.5
+  negative_subsample_ratio: 1.0
+  hard_negative_subsample_ratio: 2.5
+  fp_bank_confidence_quantile: 0.70
+  fp_bank_peakness_threshold: 0.35
+  fp_bank_min_height_m: 2.0
+  lambda_cls_focal_alpha: 0.25
+  lambda_cls_focal_gamma: 2.0
+  hard_negative_cls_weight: 2.5
+  source_specific_calibration: false
+  classification_threshold_grid: [0.05, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60]
+  final_nms_radius_grid_m: [1.0, 1.2, 1.5]
+  final_min_height_grid_m: [0.0, 1.5, 2.0]

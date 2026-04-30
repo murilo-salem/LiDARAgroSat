@@ -1,0 +1,42 @@
+data:
+  split_mode: basic
+  species_label_mode: coarse
+  adaptive_target_sigma: true
+  adaptive_sigma_use_nn_distance: true
+  adaptive_sigma_nn_scale: 0.30
+  snap_centers_to_apex_radius_m: 0.8
+  apex_secondary_weight: 0.35
+  context_margin_px: 16
+  supervision_margin_px: 16
+  crown_radius_a: 0.9
+  crown_radius_b: 0.035
+  crown_radius_min_m: 0.8
+  crown_radius_max_m: 2.2
+  peakness_window_sizes_m: [0.8, 1.2, 1.6]
+
+training:
+  batch_size: 1
+  accumulation_steps: 4
+  epochs: 16
+  min_epochs_before_stop: 8
+  patience: 5
+  num_workers: 2
+  learning_rate: 0.00015
+  lambda_distance: 0.25
+  lambda_peakness: 0.20
+  lambda_species: 0.10
+  deep_supervision_weight: 0.20
+  difficulty_positive_weight: 1.25
+  sample_negative_tile_ratio: 0.20
+  sample_hard_negative_tile_ratio: 0.75
+  checkpoint_metric: f1
+
+evaluation:
+  use_tta: true
+  tune_postprocess: true
+  adaptive_nms: true
+  confidence_threshold_grid: [0.05, 0.10, 0.20, 0.30, 0.40, 0.50]
+  nms_radius_grid_m: [0.8, 1.0, 1.2, 1.5]
+  min_pred_height_grid_m: [1.5, 2.0, 2.5]
+  min_chm_at_center_grid_m: [1.5, 2.0, 2.5]
+  border_margin_grid_px: [0, 8, 16]

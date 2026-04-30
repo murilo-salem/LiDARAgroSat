@@ -1,0 +1,7 @@
+model:
+  experiment_name: multimodal_late_fusion
+  modality: multimodal
+  fusion_strategy: late
+  rgb_in_channels: 3
+  lidar_in_channels: 13
+

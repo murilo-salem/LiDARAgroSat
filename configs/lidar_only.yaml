@@ -1,0 +1,7 @@
+model:
+  experiment_name: lidar_only
+  modality: lidar
+  fusion_strategy: mid
+  rgb_in_channels: 3
+  lidar_in_channels: 13
+

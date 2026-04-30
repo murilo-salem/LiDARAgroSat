@@ -1,0 +1,11 @@
+paths:
+  processed_dir: data/processed_preproc_explicit
+  splits_dir: data/splits_preproc_explicit
+  experiments_dir: data/experiments_preproc_explicit
+
+preprocessing:
+  apply_multimodal_shift_correction: true
+  clip_reference_to_bounds: true
+  reference_height_min_m: 0.0
+  reference_height_max_m: 80.0
+  persist_chm_features: true

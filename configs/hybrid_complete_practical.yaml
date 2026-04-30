@@ -1,0 +1,6 @@
+hybrid:
+  batch_size: 32
+  epochs: 12
+  patience: 4
+  candidate_max_per_plot: 1536
+  negative_subsample_ratio: 1.5

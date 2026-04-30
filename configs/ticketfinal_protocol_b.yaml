@@ -1,0 +1,14 @@
+paths:
+  root_dir: .
+  processed_dir: data/processed_preproc_explicit
+  output_dir: outputs_ticketfinal_stage1
+
+evaluation:
+  match_radius_m: 5.0
+  height_tolerance_m: 3.0
+  bootstrap_iterations: 256
+
+benchmark:
+  protocol_id: protocol_b_v2_faithful10
+  dataset_id: dubrovin_kaggle_v1
+  family: ticketfinal_stage1

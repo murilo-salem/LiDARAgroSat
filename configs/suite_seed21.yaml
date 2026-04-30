@@ -1,0 +1,9 @@
+paths:
+  output_dir: outputs_suite_seed21
+
+data:
+  basic_split_seed: 21
+
+hybrid:
+  proposal_output_dir: outputs_suite_seed21
+  proposal_method_name: multimodal_mid_fusion

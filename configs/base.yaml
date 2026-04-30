@@ -1,0 +1,105 @@
+paths:
+  root_dir: .
+  raw_dir: data/raw
+  processed_dir: data/processed
+  splits_dir: data/splits
+  experiments_dir: data/experiments
+  output_dir: outputs
+
+data:
+  plot_ids: []
+  raster_resolution: 0.1
+  alternate_resolutions: [0.2]
+  tile_size: 512
+  tile_overlap: 96
+  target_sigma_m: 0.6
+  target_sigma_candidates_m: [0.4, 0.6, 0.8, 1.0]
+  min_tree_height_m: 2.0
+  structural_channels:
+    - zmax
+    - zmean
+    - zstd
+    - zp95
+    - density_total
+    - density_0p5_2
+    - density_2_5
+    - density_5_10
+    - density_10_20
+    - density_gt20
+    - cover_gt2
+    - cover_gt5
+    - vertical_roughness
+  reference_species_groups: {}
+
+preprocessing:
+  dtm_cell_size: 1.0
+  ground_quantile: 0.05
+  ground_residual_threshold_m: 0.35
+  noise_z_quantiles: [0.001, 0.999]
+  rgb_clip_percentiles: [1.0, 99.0]
+  rgb_standardize: true
+  chm_gaussian_sigmas: [0.7, 1.0, 1.5]
+  estimate_multimodal_shift: true
+  max_registration_shift_px: 8
+
+augmentation:
+  horizontal_flip: true
+  vertical_flip: true
+  rotate_90: true
+  small_angle_rotation_deg: 8.0
+  translation_px: 8
+  rgb_color_jitter: 0.08
+  rgb_blur_prob: 0.15
+  lidar_spatial_dropout_prob: 0.1
+
+model:
+  experiment_name: multimodal_mid_fusion
+  modality: multimodal
+  fusion_strategy: mid
+  rgb_in_channels: 3
+  lidar_in_channels: 13
+  encoder_channels: [32, 64, 128, 256]
+  decoder_channels: [160, 96, 64, 32]
+  normalization: group
+  dropout: 0.1
+  use_height_head: true
+  use_offsets: true
+
+training:
+  seed: 13
+  epochs: 120
+  batch_size: 4
+  num_workers: 4
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  gradient_clip_norm: 1.0
+  mixed_precision: true
+  scheduler: cosine
+  patience: 20
+  positive_pixel_weight: 8.0
+  lambda_heatmap: 1.0
+  lambda_offset: 1.0
+  lambda_height: 0.5
+  validation_plots_per_fold: 1
+  confidence_threshold: 0.35
+  checkpoint_metric: f1
+  sample_negative_tile_ratio: 0.25
+
+evaluation:
+  match_radius_m: 1.5
+  radius_candidates_m: [1.0, 1.5, 2.0]
+  height_tolerance_m: 3.0
+  height_tolerance_candidates_m: [2.0, 3.0, 5.0]
+  nms_radius_m: 1.2
+  confidence_thresholds: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50]
+  baseline_window_sizes_m: [1.0, 1.5, 2.0]
+  baseline_min_heights_m: [2.0, 3.0, 4.0]
+  bootstrap_iterations: 2000
+
+analysis:
+  height_bins_m: [0.0, 10.0, 20.0, 30.0, 60.0]
+  local_density_radius_m: 6.0
+  overlap_radius_m: 3.0
+  save_figures: true
+  dpi: 180
+

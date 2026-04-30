@@ -1,0 +1,9 @@
+model:
+  experiment_name: multimodal_mid_fusion_full
+  modality: multimodal
+  fusion_strategy: mid
+  rgb_in_channels: 3
+  lidar_in_channels: 13
+  use_peakness_head: true
+  use_species_head: true
+  use_deep_supervision: true

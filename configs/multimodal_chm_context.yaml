@@ -1,0 +1,13 @@
+model:
+  experiment_name: multimodal_chm_context_interactive
+  modality: multimodal
+  fusion_strategy: mid
+  rgb_in_channels: 3
+  lidar_in_channels: 13
+  chm_in_channels: 6
+  use_chm_branch: true
+  use_distance_head: true
+  use_peakness_head: true
+  use_species_head: true
+  use_deep_supervision: true
+

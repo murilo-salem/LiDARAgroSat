@@ -1,0 +1,8 @@
+paths:
+  output_dir: outputs_basic_split
+
+data:
+  split_mode: basic
+  basic_train_fraction: 0.8
+  basic_val_fraction: 0.1
+  basic_split_seed: 13

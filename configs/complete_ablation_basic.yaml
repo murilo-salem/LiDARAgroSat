@@ -1,0 +1,71 @@
+paths:
+  output_dir: outputs_complete_ablation
+
+data:
+  split_mode: basic
+  basic_train_fraction: 0.8
+  basic_val_fraction: 0.1
+  basic_split_seed: 13
+  adaptive_target_sigma: true
+  adaptive_sigma_a: 0.25
+  adaptive_sigma_b: 0.03
+  adaptive_sigma_min_m: 0.45
+  adaptive_sigma_max_m: 1.20
+  species_label_mode: coarse
+  peakness_window_sizes_m: [0.8, 1.2, 1.6]
+  hard_negative_window_sizes_m: [0.8, 1.2, 1.6]
+  hard_negative_match_radius_m: 1.5
+  hard_negative_border_margin_px: 16
+  hard_negative_dilation_px: 3
+  hard_negative_rgb_complexity_quantile: 0.9
+
+training:
+  epochs: 120
+  validation_interval_epochs: 1
+  min_epochs_before_stop: 25
+  accumulation_steps: 4
+  batch_size: 2
+  patience: 15
+  num_workers: 4
+  lambda_peakness: 0.3
+  lambda_species: 0.2
+  deep_supervision_weight: 0.3
+  hard_negative_pixel_weight: 3.0
+  sample_negative_tile_ratio: 0.5
+  sample_hard_negative_tile_ratio: 1.0
+
+evaluation:
+  tune_postprocess: true
+  use_tta: true
+  adaptive_nms: true
+  adaptive_nms_r0_m: 0.6
+  adaptive_nms_alpha: 0.03
+  adaptive_nms_rmin_m: 0.8
+  adaptive_nms_rmax_m: 1.8
+  confidence_threshold_grid: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40]
+  nms_radius_grid_m: [0.8, 1.0, 1.2, 1.5, 1.8]
+  min_pred_height_grid_m: [null, 1.5, 2.0, 2.5]
+  min_chm_at_center_grid_m: [null, 2.0, 2.5, 3.0]
+  border_margin_grid_px: [0, 8, 16]
+
+hybrid:
+  proposal_output_dir: outputs_basic_split
+  proposal_method_name: multimodal_mid_fusion
+  proposal_confidence_threshold: 0.10
+  proposal_nms_radius_m: 0.8
+  proposal_window_sizes_m: [0.8, 1.0, 1.2, 1.5]
+  proposal_gaussian_sigmas: [0.7, 1.0]
+  proposal_min_height_m: 2.0
+  proposal_dedup_radius_m: 0.8
+  candidate_patch_size: 96
+  candidate_max_per_plot: 4096
+  batch_size: 64
+  epochs: 60
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  patience: 10
+  positive_match_radius_m: 1.5
+  negative_subsample_ratio: 2.0
+  classification_threshold_grid: [0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70]
+  final_nms_radius_grid_m: [0.8, 1.0, 1.2, 1.5]
+  final_min_height_grid_m: [0.0, 1.5, 2.0, 2.5]

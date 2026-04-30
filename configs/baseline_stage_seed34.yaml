@@ -1,0 +1,6 @@
+paths:
+  output_dir: outputs_baseline_stage_seed34
+
+data:
+  basic_split_seed: 34
+

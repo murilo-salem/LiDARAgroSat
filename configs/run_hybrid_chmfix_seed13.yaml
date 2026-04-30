@@ -1,0 +1,9 @@
+paths:
+  output_dir: outputs_hybrid_chmfix_seed13
+
+data:
+  basic_split_seed: 13
+
+hybrid:
+  proposal_output_dir: outputs_chmfix_seed13
+  proposal_method_name: multimodal_chm_context_interactive

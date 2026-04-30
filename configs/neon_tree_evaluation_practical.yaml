@@ -1,0 +1,41 @@
+paths:
+  root_dir: .
+  raw_dir: data/neon/raw
+  processed_dir: data/neon/processed
+  splits_dir: data/neon/splits
+  experiments_dir: data/neon/experiments
+  output_dir: outputs_neon_tree_evaluation_practical
+
+data:
+  split_mode: basic
+  basic_train_fraction: 0.8
+  basic_val_fraction: 0.1
+  basic_split_seed: 13
+
+preprocessing:
+  estimate_multimodal_shift: false
+  persist_chm_features: false
+
+model:
+  use_height_head: false
+
+training:
+  seed: 13
+  epochs: 20
+  validation_interval_epochs: 5
+  patience: 5
+  batch_size: 4
+  num_workers: 8
+  lambda_height: 0.0
+
+evaluation:
+  bootstrap_iterations: 200
+
+analysis:
+  save_figures: false
+
+benchmark:
+  protocol_id: protocol_neon_tree_evaluation_basic_v1
+  dataset_id: neon_tree_evaluation_v0_2_2
+  family: neon_tree_evaluation
+  label_policy: field_center

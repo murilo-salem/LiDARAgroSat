@@ -1,0 +1,2 @@
+"""Baseline methods for LiDARAgroSat."""
+

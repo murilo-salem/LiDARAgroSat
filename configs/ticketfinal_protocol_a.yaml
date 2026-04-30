@@ -1,0 +1,28 @@
+paths:
+  root_dir: .
+  processed_dir: data/processed_preproc_explicit
+  output_dir: outputs_ticketfinal_v2
+
+data:
+  split_mode: basic
+  label_policy: field_center
+  label_snap_radius_m: 1.0
+  label_mixed_weight: 0.35
+
+training:
+  seed: 13
+
+hybrid:
+  epochs: 6
+  patience: 2
+  learning_rate: 0.0003
+
+evaluation:
+  match_radius_m: 1.5
+  height_tolerance_m: 3.0
+  bootstrap_iterations: 256
+
+benchmark:
+  protocol_id: protocol_a_v2_3split
+  dataset_id: dubrovin_kaggle_v1
+  family: ticketfinal

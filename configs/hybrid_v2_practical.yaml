@@ -1,0 +1,23 @@
+data:
+  split_mode: basic
+  species_label_mode: coarse
+  peakness_window_sizes_m: [0.8, 1.2, 1.6]
+
+evaluation:
+  use_tta: true
+
+hybrid:
+  batch_size: 32
+  epochs: 10
+  patience: 4
+  candidate_max_per_plot: 1024
+  negative_subsample_ratio: 1.5
+  hard_negative_subsample_ratio: 2.5
+  fp_bank_confidence_quantile: 0.70
+  fp_bank_peakness_threshold: 0.35
+  fp_bank_min_height_m: 2.0
+  hard_negative_cls_weight: 2.5
+  source_specific_calibration: true
+  classification_threshold_grid: [0.10, 0.20, 0.30, 0.40, 0.50, 0.60]
+  final_nms_radius_grid_m: [1.0, 1.2, 1.5]
+  final_min_height_grid_m: [0.0, 1.5, 2.0]
