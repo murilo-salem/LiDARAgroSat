@@ -1,0 +1,14 @@
+*.pth
+*.pkl
+*.h5
+*.hdf5
+*.npz
+*.npy
+__pycache__/
+*.pyc
+.venv/
+venv/
+outputs*/
+runs/
+.pytest_cache/
+.DS_Store
